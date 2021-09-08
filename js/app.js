@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //Evetos para select de forms
 marca.addEventListener("change", (e) =>{
     datosBusqueda.marca = e.target.value;
+    filtrarAuto();
     
 });
 year.addEventListener("change", (e) =>{
@@ -84,3 +85,26 @@ function llenarAutos () {
         year.appendChild(opcion);
     }
 }
+// function filtrarAuto() {
+//     const resultado = autos.filter(  (a) => {
+//         if (datosBusqueda.marca){
+//             return a.marca === datosBusqueda.marca;
+//         }else {
+//             return a;
+//         }
+//     } );
+//     console.log(resultado)
+// }
+//funcion que filtra en base al la busqueda
+function filtrarAuto() {
+    const resultado = autos.filter(  filtrarMarca ) 
+    console.log(resultado)
+}
+
+function filtrarMarca(a){
+    const {marca} = datosBusqueda;
+    if( marca ){
+        return a.marca === marca;
+    } 
+    return a;
+};
